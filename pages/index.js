@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import ApiService from './api/Api.service.js';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -34,6 +35,15 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
       </Head>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route path="/posts/new" component={PostNew} />
+            <Route path="/posts/:id" component={PostsShow} />
+            <Route path="/" component={PostIndex} />
+          </Switch>
+        </div>
+      </BrowserRouter>
 
       <main>
         <h1>Hello World</h1>
